@@ -8,3 +8,6 @@ The demonstration uses:
 * Jquery 
 * Dymo JS Framwork 2 
 * Knockout.js 3
+
+# Usage 
+This demonstration was tested with a Dymo web service provided by the DYMO LabelWriters v8.6 software (downloaded from here http://www.dymo.com/en-GB/dymo-user-guides), and a 'Dymo LabelWriter 450' printer.
