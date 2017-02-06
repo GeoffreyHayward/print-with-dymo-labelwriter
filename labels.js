@@ -15,7 +15,6 @@ function PrinterViewModel() {
 	this.printerChecked = ko.observable(false);
 
 	// DYMO label
-	this.lebelXml = ko.observable("");
 	this.lebelAjaxComplete = ko.observable(false);
 	this.lebelajaxResponseCode = ko.observable(-1);
 	this.lebelaAcquired = ko.computed(function () {
@@ -41,7 +40,7 @@ function PrinterViewModel() {
 }
 
 var printerViewModel = new PrinterViewModel();
-var ShippingLableTemplate;
+var shippingLabelTemplate;
 
 $(function () {
 	ko.applyBindings(printerViewModel);
@@ -81,15 +80,15 @@ function dymoTemplate() {
 		url: "shipping.label",
 		dataType: "text"
 	}).then(function (data, textStatus, jqXHR) {
-		printerViewModel.lebelXml(data);
-		printerViewModel.lebelajaxResponseCode(jqXHR.status); // todo
+		shippingLabelTemplate = data;
+		printerViewModel.lebelajaxResponseCode(jqXHR.status);
 		printerViewModel.lebelAjaxComplete(true);
 	});
 }
 
 function dymoPrint() {
 	printerViewModel.message("Spooling");
-	var label = dymo.label.framework.openLabelXml(printerViewModel.lebelXml());
+	var label = dymo.label.framework.openLabelXml(shippingLabelTemplate);
 	label.setObjectText('TEXT', document.getElementById("address-box").value);
 	label.printAsync(printerViewModel.printerName()).then(function (state) {
 		if (state) {
