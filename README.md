@@ -6,7 +6,7 @@ The Dymo LabelWriter provides a JavaScript framework for printing labels from a 
 The demonstration uses: 
 * Bootstrap 3
 * Jquery 
-* Dymo JS Framwork 2 
+* Dymo JS Framwork 3
 * Knockout.js 3
 
 # Usage 
